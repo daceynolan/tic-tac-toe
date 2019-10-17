@@ -1,11 +1,11 @@
 import React from "react";
 
-import Square from "./Square";
+import Board from "./Board";
 
 const App = () => {
   return (
     <div>
-      <Square />
+      <Board />
     </div>
   );
 };
