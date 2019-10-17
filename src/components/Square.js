@@ -1,7 +1,16 @@
 import React from "react";
 
-const Square = () => {
-  return <button className="square">{/*TODO*/}</button>;
+const Square = props => {
+  return (
+    <button
+      className="square"
+      onClick={() => {
+        alert("click");
+      }}
+    >
+      {props.value}
+    </button>
+  );
 };
 
 export default Square;
