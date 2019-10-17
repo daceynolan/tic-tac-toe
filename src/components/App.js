@@ -1,11 +1,11 @@
 import React from "react";
 
-import Board from "./Board";
+import Game from "./Game";
 
 const App = () => {
   return (
     <div>
-      <Board />
+      <Game />
     </div>
   );
 };
