@@ -3,12 +3,34 @@ import React from "react";
 import Square from "./Square";
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+      xIsNext: true
+    };
+  }
+
+  handleClick(index) {
+    const squares = this.state.squares.slice();
+    squares[index] = this.state.xIsNext ? "X" : "O";
+    this.setState({
+      squares: squares,
+      xIsNext: !this.state.xIsNext
+    });
+  }
+
   renderSquare(index) {
-    return <Square value={index} />;
+    return (
+      <Square
+        value={this.state.squares[index]}
+        onClick={() => this.handleClick(index)}
+      />
+    );
   }
 
   render() {
-    const status = "Next Player: X";
+    const status = "Next Player: " + (this.state.xIsNext ? "X" : "O");
 
     return (
       <div>
