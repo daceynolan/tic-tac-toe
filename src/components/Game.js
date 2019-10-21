@@ -43,10 +43,23 @@ class Game extends React.Component {
     });
   }
 
+  statusText() {
+    const current = this.state.history[this.state.stepNumber];
+    const winner = calculateWinner(current.squares);
+    const maxHistory = 10;
+    //step 1 of history is game start. Does not count moves until step 2
+    if (winner) {
+      return "Winner " + winner;
+    } else if (this.state.history.length >= maxHistory && !winner) {
+      return "Draw";
+    } else {
+      return "Next player: " + (this.state.xIsNext ? "X" : "O");
+    }
+  }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
       const desc = move ? "Go to move #" + move : "Go to game start";
@@ -57,16 +70,6 @@ class Game extends React.Component {
       );
     });
 
-    let status;
-    const totalMoves = 10;
-    if (winner) {
-      status = "Winner " + winner;
-    } else if (history.length >= totalMoves && !winner) {
-      status = "Tie";
-    } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-    }
-
     return (
       <div className="game">
         <div className="game-board">
@@ -76,7 +79,7 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div>{status}</div>
+          <div>{this.statusText()}</div>
           <ol>{moves}</ol>
         </div>
       </div>
