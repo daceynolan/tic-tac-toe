@@ -31,6 +31,7 @@ class Game extends React.Component {
         }
       ]),
       stepNumber: history.length,
+
       xIsNext: !this.state.xIsNext
     });
   }
@@ -57,8 +58,11 @@ class Game extends React.Component {
     });
 
     let status;
+    const totalMoves = 10;
     if (winner) {
-      status = "Winner: " + winner;
+      status = "Winner " + winner;
+    } else if (history.length >= totalMoves && !winner) {
+      status = "Tie";
     } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
