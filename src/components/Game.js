@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Board from "./Board";
 
@@ -8,9 +8,24 @@ const Game = () => {
   const [playerO, setPlayerO] = useState("");
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
+  const [statusText, setStatusText] = useState("");
 
   const playerXName = playerX || "X";
   const playerOName = playerO || "O";
+
+  useEffect(() => {
+    const current = history[stepNumber];
+    const winner = calculateWinner(current.squares);
+    // Max at 10 since first move is "start" game + 9 real moves
+    const MAX_HISTORY = 10;
+    if (winner) {
+      return setStatusText(`Winner: ${winner}`);
+    }
+    if (history.length >= MAX_HISTORY && !winner) {
+      return setStatusText("Draw");
+    }
+    return setStatusText(`Next player: ${xIsNext ? playerXName : playerOName}`);
+  }, [history, playerX, playerO]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const changePlayerX = event => {
     setPlayerX(event.target.value);
@@ -38,20 +53,6 @@ const Game = () => {
     setXIsNext(step % 2 === 0);
   };
 
-  const statusText = () => {
-    const current = history[stepNumber];
-    const winner = calculateWinner(current.squares);
-    // Max at 10 since first move is "start" game + 9 real moves
-    const MAX_HISTORY = 10;
-    if (winner) {
-      return `Winner: ${winner}`;
-    }
-    if (history.length >= MAX_HISTORY && !winner) {
-      return "Draw";
-    }
-    return `Next player: ${xIsNext ? playerXName : playerOName}`;
-  };
-
   const current = history[stepNumber];
   const moves = history.map((step, move) => {
     const desc = move ? `Go to move # ${move}` : "Go to game start";
@@ -71,7 +72,7 @@ const Game = () => {
         />
       </div>
       <div className="game-info">
-        <div>{statusText()}</div>
+        <div>{statusText}</div>
         <ol>{moves}</ol>
       </div>
       <div className="game-player">
