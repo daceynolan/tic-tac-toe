@@ -12,18 +12,32 @@ class Game extends React.Component {
         }
       ],
       stepNumber: 0,
-      xIsNext: true
+      xIsNext: true,
+      playerX: "",
+      playerO: ""
     };
   }
 
+  changePlayerX = event => {
+    this.setState({
+      playerX: event.target.value
+    });
+  };
+  changePlayerO = event => {
+    this.setState({
+      playerO: event.target.value
+    });
+  };
+
   handleClick(index) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const { stepNumber, xIsNext } = this.state;
+    const history = this.state.history.slice(0, stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[index]) {
       return;
     }
-    squares[index] = this.state.xIsNext ? "X" : "O";
+    squares[index] = xIsNext ? "X" : "O";
     this.setState({
       history: history.concat([
         {
@@ -44,24 +58,24 @@ class Game extends React.Component {
   }
 
   statusText() {
-    const { history, xIsNext, stepNumber } = this.state;
+    const { history, xIsNext, stepNumber, playerX, playerO } = this.state;
+    console.log(playerO);
     const current = history[stepNumber];
     const winner = calculateWinner(current.squares);
     const maxHistory = 10;
     //step 1 of history is game start. Does not count moves until step 2
     if (winner) {
-      return "Winner " + winner;
+      return "Winner: " + winner;
     } else if (history.length >= maxHistory && !winner) {
       return "Draw";
     } else {
-      return "Next player: " + (xIsNext ? "X" : "O");
+      return "Next player: " + (xIsNext ? playerX || "X" : playerO || "O");
     }
   }
 
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-
     const moves = history.map((step, move) => {
       const desc = move ? "Go to move #" + move : "Go to game start";
       return (
@@ -82,6 +96,27 @@ class Game extends React.Component {
         <div className="game-info">
           <div>{this.statusText()}</div>
           <ol>{moves}</ol>
+        </div>
+        <div className="game-player">
+          Enter name
+          <form>
+            <label>
+              Player X:
+              <input
+                type="text"
+                value={this.state.playerX}
+                onChange={this.changePlayerX}
+              />
+            </label>
+            <label>
+              Player O:
+              <input
+                type="text"
+                onChange={this.changePlayerO}
+                value={this.state.playerO}
+              />
+            </label>
+          </form>
         </div>
       </div>
     );
