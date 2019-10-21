@@ -1,84 +1,96 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Board from "./Board";
 
-class Game extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: [
-        {
-          squares: Array(9).fill(null)
-        }
-      ],
-      stepNumber: 0,
-      xIsNext: true
-    };
-  }
+const Game = () => {
+  const [stepNumber, setStepNumber] = useState(0);
+  const [playerX, setPlayerX] = useState("");
+  const [playerO, setPlayerO] = useState("");
+  const [xIsNext, setXIsNext] = useState(true);
+  const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
+  const [statusText, setStatusText] = useState("");
 
-  handleClick(index) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    const current = history[history.length - 1];
+  const playerXName = playerX || "X";
+  const playerOName = playerO || "O";
+
+  useEffect(() => {
+    const current = history[stepNumber];
+    const winner = calculateWinner(current.squares);
+    // Max at 10 since first move is "start" game + 9 real moves
+    const MAX_HISTORY = 10;
+    if (winner) {
+      return setStatusText(`Winner: ${winner}`);
+    }
+    if (history.length >= MAX_HISTORY && !winner) {
+      return setStatusText("Draw");
+    }
+    return setStatusText(`Next player: ${xIsNext ? playerXName : playerOName}`);
+  }, [history, playerX, playerO]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const changePlayerX = event => {
+    setPlayerX(event.target.value);
+  };
+
+  const changePlayerO = event => {
+    setPlayerO(event.target.value);
+  };
+
+  const handleClick = index => {
+    const sliceHistory = history.slice(0, stepNumber + 1);
+    const current = sliceHistory[sliceHistory.length - 1];
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[index]) {
       return;
     }
-    squares[index] = this.state.xIsNext ? "X" : "O";
-    this.setState({
-      history: history.concat([
-        {
-          squares: squares
-        }
-      ]),
-      stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
-    });
-  }
+    squares[index] = xIsNext ? "X" : "O";
+    setHistory(sliceHistory.concat([{ squares: squares }]));
+    setStepNumber(sliceHistory.length);
+    setXIsNext(!xIsNext);
+  };
 
-  jumpTo(step) {
-    this.setState({
-      stepNumber: step,
-      xIsNext: step % 2 === 0
-    });
-  }
+  const jumpTo = step => {
+    setStepNumber(step);
+    setXIsNext(step % 2 === 0);
+  };
 
-  render() {
-    const history = this.state.history;
-    const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
-
-    const moves = history.map((step, move) => {
-      const desc = move ? "Go to move #" + move : "Go to game start";
-      return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
-      );
-    });
-
-    let status;
-    if (winner) {
-      status = "Winner: " + winner;
-    } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-    }
-
+  const current = history[stepNumber];
+  const moves = history.map((step, move) => {
+    const desc = move ? `Go to move # ${move}` : "Go to game start";
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board
-            squares={current.squares}
-            onClick={index => this.handleClick(index)}
-          />
-        </div>
-        <div className="game-info">
-          <div>{status}</div>
-          <ol>{moves}</ol>
-        </div>
-      </div>
+      <li key={move}>
+        <button onClick={() => jumpTo(move)}>{desc}</button>
+      </li>
     );
-  }
-}
+  });
+
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board
+          squares={current.squares}
+          onClick={index => handleClick(index)}
+        />
+      </div>
+      <div className="game-info">
+        <div>{statusText}</div>
+        <ol>{moves}</ol>
+      </div>
+      <div className="game-player">
+        Enter name
+        <form>
+          <label>
+            Player X
+            <input type="text" onChange={changePlayerX} value={playerX} />
+          </label>
+          <label>
+            Player O
+            <input type="text" onChange={changePlayerO} value={playerO} />
+          </label>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export default Game;
 
