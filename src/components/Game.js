@@ -44,16 +44,17 @@ class Game extends React.Component {
   }
 
   statusText() {
-    const current = this.state.history[this.state.stepNumber];
+    const { history, xIsNext, stepNumber } = this.state;
+    const current = history[stepNumber];
     const winner = calculateWinner(current.squares);
     const maxHistory = 10;
     //step 1 of history is game start. Does not count moves until step 2
     if (winner) {
       return "Winner " + winner;
-    } else if (this.state.history.length >= maxHistory && !winner) {
+    } else if (history.length >= maxHistory && !winner) {
       return "Draw";
     } else {
-      return "Next player: " + (this.state.xIsNext ? "X" : "O");
+      return "Next player: " + (xIsNext ? "X" : "O");
     }
   }
 
