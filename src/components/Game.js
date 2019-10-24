@@ -25,7 +25,7 @@ const Game = () => {
       return setStatusText("Draw");
     }
     return setStatusText(`Next player: ${xIsNext ? playerXName : playerOName}`);
-  }, [history, playerXName, playerOName]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [history, playerX, playerO]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const changePlayerX = event => {
     setPlayerX(event.target.value);
