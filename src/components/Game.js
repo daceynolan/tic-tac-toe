@@ -48,22 +48,7 @@ const Game = () => {
     setXIsNext(!xIsNext);
   };
 
-  // const jumpTo = step => {
-  //   setStepNumber(step);
-  //   setXIsNext(step % 2 === 0);
-  // };
-
   const current = history[stepNumber];
-  // const moves = history.map((step, move) => {
-  //   const desc = move ? `Go to move # ${move}` : "Go to game start";
-  //   return (
-  //     <div key={move}>
-  //       <button className="game-history" onClick={() => jumpTo(move)}>
-  //         {desc}
-  //       </button>
-  //     </div>
-  //   );
-  // });
 
   return (
     <div className="game">
@@ -82,12 +67,10 @@ const Game = () => {
           </form>
         </div>
         <div className="game-status">{statusText}</div>
-        <div>
-          <Board
-            squares={current.squares}
-            onClick={index => handleClick(index)}
-          />
-        </div>
+        <Board
+          squares={current.squares}
+          onClick={index => handleClick(index)}
+        />
       </div>
     </div>
   );
