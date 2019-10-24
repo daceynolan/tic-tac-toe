@@ -48,45 +48,29 @@ const Game = () => {
     setXIsNext(!xIsNext);
   };
 
-  const jumpTo = step => {
-    setStepNumber(step);
-    setXIsNext(step % 2 === 0);
-  };
-
   const current = history[stepNumber];
-  const moves = history.map((step, move) => {
-    const desc = move ? `Go to move # ${move}` : "Go to game start";
-    return (
-      <li key={move}>
-        <button onClick={() => jumpTo(move)}>{desc}</button>
-      </li>
-    );
-  });
 
   return (
     <div className="game">
-      <div className="game-board">
+      <div className="game-info">
+        <h1>Tic-Tac-Toe</h1>
+        <div className="game-player">
+          <form>
+            <label>
+              Player X
+              <input type="text" onChange={changePlayerX} value={playerX} />
+            </label>
+            <label>
+              Player O
+              <input type="text" onChange={changePlayerO} value={playerO} />
+            </label>
+          </form>
+        </div>
+        <div className="game-status">{statusText}</div>
         <Board
           squares={current.squares}
           onClick={index => handleClick(index)}
         />
-      </div>
-      <div className="game-info">
-        <div>{statusText}</div>
-        <ol>{moves}</ol>
-      </div>
-      <div className="game-player">
-        Enter name
-        <form>
-          <label>
-            Player X
-            <input type="text" onChange={changePlayerX} value={playerX} />
-          </label>
-          <label>
-            Player O
-            <input type="text" onChange={changePlayerO} value={playerO} />
-          </label>
-        </form>
       </div>
     </div>
   );
