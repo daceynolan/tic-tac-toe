@@ -11,12 +11,10 @@ label {
 input {
   width: 70px;
   margin-left: 6px;
-}
-
-h1 {
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
+  border: 1px solid rgb(131, 134, 137);
+  border-radius: 6px;
+  color: rgb(131, 134, 137);
+  font-weight: 500;
 }
 
 .button {
@@ -24,7 +22,7 @@ h1 {
   border-radius: 600px;
   height: 20px;
   cursor: pointer;
-  color: rgb(131, 134, 137);
+  color: #ffffff;
 }
 
 .board {
@@ -38,10 +36,9 @@ h1 {
 }
 
 .square {
-  align-items: center;
   cursor: pointer;
   background: #fff;
-  border: 1px solid black;
+  border: 1px solid rgb(131, 134, 137);
   display: flex;
   font-size: 45px;
   font-weight: bold;
@@ -51,7 +48,9 @@ h1 {
   padding: 0;
   width: 100px;
   height: 100px;
+  align-items: center;
   justify-content: center;
+  color: rgb(67, 209, 175);
 }
 
 .square:focus {
@@ -63,22 +62,49 @@ h1 {
 }
 
 .game {
-  display: flex;
-  justify-content: center;
-}
-
-.game-info {
+  background-color: rgba(246, 247, 251, 0.9);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.game-info {
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px;
+  max-width: 600px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 
-.game-player {
-  margin-bottom: 10px;
+.game-title {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  color: #ffffff;
+  background-color: rgb(67, 209, 175);
+  margin: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
+  z-index: 1;
+  padding: 16px;
+  text-align: center;
+  font-weight: 600;
 }
 
-.game-status {
+.game-content {
   font-size: 20px;
   margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
 }

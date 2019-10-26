@@ -1,11 +1,17 @@
-h2 {
-  text-align: center;
-  color: #1bded4;
-  font-weight: 600;
-}
-
 p {
   font-weight: 500;
+}
+
+.game-rules__container {
+  background-color: rgba(246, 247, 251, 0.9);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-rules {
@@ -21,21 +27,12 @@ p {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
   z-index: 1;
   padding: 16px;
+  text-align: center;
+  color: #ffffff;
+  background-color: rgb(67, 209, 175);
+  font-weight: 600;
 }
 
 .game-rules__content {
   padding: 16px;
-}
-
-.game-rules__container {
-  background-color: rgba(246, 247, 251, 0.9);
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

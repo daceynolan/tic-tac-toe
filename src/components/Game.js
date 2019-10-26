@@ -63,31 +63,39 @@ const Game = () => {
   return (
     <div className="game">
       <div className="game-info">
-        <span>
-          <h1>
-            Tic-Tac-Toe
-            <button onClick={showRules} className="button">
-              ?
-            </button>
-          </h1>
-        </span>
-        <div className="game-player">
+        <h1 className="game-title">
+          Tic-Tac-Toe
+          <button onClick={showRules} className="button">
+            ?
+          </button>
+        </h1>
+        <div className="game-content">
           <form>
             <label>
               Player X
-              <input type="text" onChange={changePlayerX} value={playerX} />
+              <input
+                type="text"
+                onChange={changePlayerX}
+                value={playerX}
+                placeholder="Name"
+              />
             </label>
             <label>
               Player O
-              <input type="text" onChange={changePlayerO} value={playerO} />
+              <input
+                type="text"
+                onChange={changePlayerO}
+                value={playerO}
+                placeholder="Name"
+              />
             </label>
           </form>
+          <p>{statusText}</p>
+          <Board
+            squares={current.squares}
+            onClick={index => handleClick(index)}
+          />
         </div>
-        <div className="game-status">{statusText}</div>
-        <Board
-          squares={current.squares}
-          onClick={index => handleClick(index)}
-        />
       </div>
       {gameRules && <Rules onClick={hideRules} />}
     </div>
