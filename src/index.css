@@ -6,15 +6,37 @@ body {
 
 label {
   margin: 6px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
 }
 
 input {
-  width: 70px;
+  width: 90px;
   margin-left: 6px;
-  border: 1px solid rgb(131, 134, 137);
-  border-radius: 6px;
+  border-radius: 5px;
   color: rgb(131, 134, 137);
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 12px;
+  display: block;
+  padding: 10px 18px 11px;
+  box-shadow: 0 1px 3px 1px rgba(160, 161, 188, 0.14);
+  text-size-adjust: 100%;
+  transition: box-shadow 0.3s ease-in-out;
+  border: none;
+  background-color: rgba(246, 247, 251, 0.9);
+}
+
+input:hover {
+  box-shadow: 0 3px 6px 1px rgba(160, 161, 188, 0.35);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(67, 209, 175);
 }
 
 .button {
@@ -107,4 +129,17 @@ input {
   align-items: center;
   justify-content: center;
   padding: 16px;
+}
+
+.game-player__form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.game-player__x {
+  margin-right: 20px;
+}
+.game-player__o {
+  margin-left: 20px;
 }

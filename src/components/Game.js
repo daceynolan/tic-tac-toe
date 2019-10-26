@@ -70,26 +70,29 @@ const Game = () => {
           </button>
         </h1>
         <div className="game-content">
-          <form>
-            <label>
-              Player X
+          <div className="game-player__form">
+            <div className="game-player__x">
+              <label htmlFor="playerX">Player X</label>
               <input
+                id="playerX"
                 type="text"
                 onChange={changePlayerX}
                 value={playerX}
                 placeholder="Name"
               />
-            </label>
-            <label>
-              Player O
+            </div>
+            <div className="game-player__o">
+              <label htmlFor="playerO">Player O</label>
               <input
+                id="playerO"
                 type="text"
                 onChange={changePlayerO}
                 value={playerO}
                 placeholder="Name"
               />
-            </label>
-          </form>
+            </div>
+          </div>
+
           <p>{statusText}</p>
           <Board
             squares={current.squares}
