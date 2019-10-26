@@ -72,23 +72,21 @@ const Game = () => {
         <div className="game-content">
           <div className="game-player__form">
             <div className="game-player__x">
-              <label htmlFor="playerX">Player X</label>
+              <label htmlFor="playerX">Player X Name</label>
               <input
                 id="playerX"
                 type="text"
                 onChange={changePlayerX}
                 value={playerX}
-                placeholder="Name"
               />
             </div>
             <div className="game-player__o">
-              <label htmlFor="playerO">Player O</label>
+              <label htmlFor="playerO">Player O Name</label>
               <input
                 id="playerO"
                 type="text"
                 onChange={changePlayerO}
                 value={playerO}
-                placeholder="Name"
               />
             </div>
           </div>

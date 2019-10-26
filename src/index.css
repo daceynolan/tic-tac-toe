@@ -28,6 +28,7 @@ input {
   transition: box-shadow 0.3s ease-in-out;
   border: none;
   background-color: rgba(246, 247, 251, 0.9);
+  border: solid 1px #ccc;
 }
 
 input:hover {
@@ -36,15 +37,18 @@ input:hover {
 
 input[type="text"]:focus {
   outline: none;
+  border-color: transparent;
   box-shadow: 0 0 0 2px rgb(67, 209, 175);
 }
 
 .button {
-  background: none;
-  border-radius: 600px;
-  height: 20px;
+  background: #ffffff;
   cursor: pointer;
-  color: #ffffff;
+  color: rgb(67, 209, 175);
+  border-radius: 50%;
+  border: #ffffff;
+  overflow: hidden;
+  margin: 10px;
 }
 
 .board {
