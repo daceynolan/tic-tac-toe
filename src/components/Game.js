@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import Board from "./Board";
+import Rules from "./Rules";
 
 const Game = () => {
   const [stepNumber, setStepNumber] = useState(0);
@@ -9,6 +10,7 @@ const Game = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [statusText, setStatusText] = useState("");
+  const [gameRules, showGameRules] = useState(false);
 
   const playerXName = playerX || "X";
   const playerOName = playerO || "O";
@@ -26,6 +28,14 @@ const Game = () => {
     }
     return setStatusText(`Next player: ${xIsNext ? playerXName : playerOName}`);
   }, [history, playerX, playerO]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const showRules = () => {
+    showGameRules(!gameRules);
+  };
+
+  const hideRules = () => {
+    showGameRules(false);
+  };
 
   const changePlayerX = event => {
     setPlayerX(event.target.value);
@@ -53,7 +63,14 @@ const Game = () => {
   return (
     <div className="game">
       <div className="game-info">
-        <h1>Tic-Tac-Toe</h1>
+        <span>
+          <h1>
+            Tic-Tac-Toe
+            <button onClick={showRules} className="button">
+              ?
+            </button>
+          </h1>
+        </span>
         <div className="game-player">
           <form>
             <label>
@@ -72,6 +89,7 @@ const Game = () => {
           onClick={index => handleClick(index)}
         />
       </div>
+      {gameRules && <Rules onClick={hideRules} />}
     </div>
   );
 };

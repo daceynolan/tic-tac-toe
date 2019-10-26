@@ -1,13 +1,7 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-}
-
-ol,
-ul {
-  padding-left: 30px;
-  color: #0c5460;
-  background-color: #d1ecf1;
-  border-color: #bee5eb;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: rgb(131, 134, 137);
 }
 
 label {
@@ -17,6 +11,20 @@ label {
 input {
   width: 70px;
   margin-left: 6px;
+}
+
+h1 {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button {
+  background: none;
+  border-radius: 600px;
+  height: 20px;
+  cursor: pointer;
+  color: rgb(131, 134, 137);
 }
 
 .board {
