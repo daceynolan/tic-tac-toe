@@ -4,7 +4,7 @@ import "./rulesmodal.css";
 
 const RulesModal = props => {
   return (
-    <div className="game-rules" onClick={props.onClick}>
+    <div className="game-rules" onClick={props.onClose}>
       <div className="game-rules__container">
         <h2 className="game-rules__title">Game Rules</h2>
         <div className="game-rules__content">

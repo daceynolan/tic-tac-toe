@@ -41,7 +41,6 @@ const Game = () => {
     setStepNumber(0);
     setXIsNext(true);
     setHistory([{ squares: Array(9).fill(null) }]);
-    setIsShowingGameRules(false);
   };
 
   const changePlayerX = event => {
