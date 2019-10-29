@@ -10,7 +10,7 @@ const Game = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [statusText, setStatusText] = useState("");
-  const [gameRules, showGameRules] = useState(false);
+  const [isShowingGameRules, showGameRules] = useState(false);
 
   const playerXName = playerX || "X";
   const playerOName = playerO || "O";
@@ -30,7 +30,7 @@ const Game = () => {
   }, [history, playerX, playerO]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const showRules = () => {
-    showGameRules(!gameRules);
+    showGameRules(!isShowingGameRules);
   };
 
   const hideRules = () => {
@@ -39,8 +39,6 @@ const Game = () => {
 
   const resetGame = () => {
     setStepNumber(0);
-    setPlayerX("");
-    setPlayerO("");
     setXIsNext(true);
     setHistory([{ squares: Array(9).fill(null) }]);
     setStatusText("");
@@ -72,16 +70,16 @@ const Game = () => {
 
   return (
     <div className="game">
-      <div className="game-info">
-        <h1 className="game-title">
+      <div className="game__info">
+        <h1 className="game__title">
           Tic-Tac-Toe
           <button onClick={showRules} className="button">
             ?
           </button>
         </h1>
-        <div className="game-content">
-          <div className="game-player__form">
-            <div className="game-player__x">
+        <div className="game__content">
+          <div className="game__player">
+            <div className="game__player--x">
               <label htmlFor="playerX">Player X Name</label>
               <input
                 id="playerX"
@@ -90,7 +88,7 @@ const Game = () => {
                 value={playerX}
               />
             </div>
-            <div className="game-player__o">
+            <div className="game__player--o">
               <label htmlFor="playerO">Player O Name</label>
               <input
                 id="playerO"
@@ -107,11 +105,11 @@ const Game = () => {
             onClick={index => handleClick(index)}
           />
         </div>
-        <button className="game-reset" onClick={resetGame}>
+        <button className="game__reset" onClick={resetGame}>
           Reset
         </button>
       </div>
-      {gameRules && <Rules onClick={hideRules} />}
+      {isShowingGameRules && <Rules onClick={hideRules} />}
     </div>
   );
 };

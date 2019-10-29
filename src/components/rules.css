@@ -2,8 +2,8 @@ p {
   font-weight: 500;
 }
 
-.game-rules__container {
-  background-color: rgba(246, 247, 251, 0.9);
+.game__rules {
+  background-color: #f6f7fb;
   position: fixed;
   left: 0;
   top: 0;
@@ -14,7 +14,7 @@ p {
   align-items: center;
 }
 
-.game-rules {
+.game__rules--container {
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px;
@@ -22,17 +22,17 @@ p {
   overflow: hidden;
 }
 
-.game-rules__title {
+.game__rules--title {
   margin: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
   z-index: 1;
   padding: 16px;
   text-align: center;
   color: #ffffff;
-  background-color: rgb(67, 209, 175);
+  background-color: #43d1af;
   font-weight: 600;
 }
 
-.game-rules__content {
+.game__rules--content {
   padding: 16px;
 }

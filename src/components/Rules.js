@@ -1,13 +1,13 @@
 import React from "react";
 
-import "./rule.css";
+import "./rules.css";
 
 const Rules = props => {
   return (
-    <div className="game-rules__container" onClick={props.onClick}>
-      <div className="game-rules">
-        <h2 className="game-rules__title">Game Rules</h2>
-        <div className="game-rules__content">
+    <div className="game__rules" onClick={props.onClick}>
+      <div className="game__rules--container">
+        <h2 className="game__rules--title">Game Rules</h2>
+        <div className="game__rules--content">
           <ol>
             <li>Pick if you want to be player X or player O.</li>
             <li>

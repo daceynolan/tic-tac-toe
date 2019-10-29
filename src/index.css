@@ -1,7 +1,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  color: rgb(131, 134, 137);
+  color: #838689;
 }
 
 label {
@@ -18,33 +18,33 @@ input {
   width: 90px;
   margin-left: 6px;
   border-radius: 5px;
-  color: rgb(131, 134, 137);
+  color: #838689;
   font-weight: 600;
   font-size: 12px;
   display: block;
   padding: 10px 18px 11px;
-  box-shadow: 0 1px 3px 1px rgba(160, 161, 188, 0.14);
+  box-shadow: 0 1px 3px 1px #838689;
   text-size-adjust: 100%;
   transition: box-shadow 0.3s ease-in-out;
   border: none;
-  background-color: rgba(246, 247, 251, 0.9);
+  background-color: #f6f7fb;
   border: solid 1px #ccc;
 }
 
 input:hover {
-  box-shadow: 0 3px 6px 1px rgba(160, 161, 188, 0.35);
+  box-shadow: 0 3px 6px 1px #838689;
 }
 
 input[type="text"]:focus {
   outline: none;
   border-color: transparent;
-  box-shadow: 0 0 0 2px rgb(67, 209, 175);
+  box-shadow: 0 0 0 2px #43d1af;
 }
 
 .button {
   background: #ffffff;
   cursor: pointer;
-  color: rgb(67, 209, 175);
+  color: #43d1af;
   border-radius: 50%;
   border: #ffffff;
   overflow: hidden;
@@ -53,7 +53,7 @@ input[type="text"]:focus {
 }
 
 .button:hover {
-  background: rgb(67, 209, 175);
+  background: #43d1af;
   border: #ffffff;
   border-radius: 50%;
   color: #ffffff;
@@ -74,7 +74,7 @@ input[type="text"]:focus {
 .square {
   cursor: pointer;
   background: #fff;
-  border: 1px solid rgb(131, 134, 137);
+  border: 1px solid #838689;
   display: flex;
   font-size: 45px;
   font-weight: bold;
@@ -86,7 +86,7 @@ input[type="text"]:focus {
   height: 100px;
   align-items: center;
   justify-content: center;
-  color: rgb(67, 209, 175);
+  color: #43d1af;
 }
 
 .square:focus {
@@ -98,7 +98,7 @@ input[type="text"]:focus {
 }
 
 .game {
-  background-color: rgba(246, 247, 251, 0.9);
+  background-color: #f6f7fb;
   position: fixed;
   left: 0;
   top: 0;
@@ -109,7 +109,7 @@ input[type="text"]:focus {
   align-items: center;
 }
 
-.game-info {
+.game__info {
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px;
@@ -121,12 +121,12 @@ input[type="text"]:focus {
   width: 100%;
 }
 
-.game-title {
+.game__title {
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
   color: #ffffff;
-  background-color: rgb(67, 209, 175);
+  background-color: #43d1af;
   margin: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
   z-index: 1;
@@ -135,7 +135,7 @@ input[type="text"]:focus {
   font-weight: 600;
 }
 
-.game-content {
+.game__content {
   font-size: 20px;
   margin-bottom: 16px;
   display: flex;
@@ -145,30 +145,30 @@ input[type="text"]:focus {
   padding: 16px;
 }
 
-.game-player__form {
+.game__player {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.game-player__x {
+.game__player--x {
   margin-right: 20px;
 }
-.game-player__o {
+.game__player--o {
   margin-left: 20px;
 }
 
-.game-reset {
+.game__reset {
   background: #ffffff;
   cursor: pointer;
-  color: rgb(67, 209, 175);
-  border-color: rgb(67, 209, 175);
+  color: #43d1af;
+  border-color: #43d1af;
   margin: 10px;
   border-radius: 5px;
 }
 
-.game-reset:hover {
-  background: rgb(67, 209, 175);
+.game__reset:hover {
+  background: #43d1af;
   margin: 10px;
   color: #ffffff;
   transition: all 0.4s ease 0s;
