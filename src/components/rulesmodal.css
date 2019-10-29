@@ -1,0 +1,38 @@
+p {
+  font-weight: 500;
+}
+
+.game-rules {
+  background-color: #f6f7fb;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-rules__container {
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.game-rules__title {
+  margin: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
+  z-index: 1;
+  padding: 16px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #43d1af;
+  font-weight: 600;
+}
+
+.game-rules__content {
+  padding: 16px;
+}

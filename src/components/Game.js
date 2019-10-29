@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import Board from "./Board";
+import RulesModal from "./RulesModal";
 
 const Game = () => {
   const [stepNumber, setStepNumber] = useState(0);
@@ -9,6 +10,7 @@ const Game = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [statusText, setStatusText] = useState("");
+  const [isShowingGameRules, setIsShowingGameRules] = useState(false);
 
   const playerXName = playerX || "X";
   const playerOName = playerO || "O";
@@ -26,6 +28,20 @@ const Game = () => {
     }
     return setStatusText(`Next player: ${xIsNext ? playerXName : playerOName}`);
   }, [history, playerX, playerO]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const showRules = () => {
+    setIsShowingGameRules(!isShowingGameRules);
+  };
+
+  const hideRules = () => {
+    setIsShowingGameRules(false);
+  };
+
+  const resetGame = () => {
+    setStepNumber(0);
+    setXIsNext(true);
+    setHistory([{ squares: Array(9).fill(null) }]);
+  };
 
   const changePlayerX = event => {
     setPlayerX(event.target.value);
@@ -52,26 +68,46 @@ const Game = () => {
 
   return (
     <div className="game">
-      <div className="game-info">
-        <h1>Tic-Tac-Toe</h1>
-        <div className="game-player">
-          <form>
-            <label>
-              Player X
-              <input type="text" onChange={changePlayerX} value={playerX} />
-            </label>
-            <label>
-              Player O
-              <input type="text" onChange={changePlayerO} value={playerO} />
-            </label>
-          </form>
+      <div className="game__info">
+        <h1 className="game__title">
+          Tic-Tac-Toe
+          <button onClick={showRules} className="button">
+            ?
+          </button>
+        </h1>
+        <div className="game__content">
+          <div className="game__player">
+            <div className="game__player-x">
+              <label htmlFor="playerX">Player X Name</label>
+              <input
+                id="playerX"
+                type="text"
+                onChange={changePlayerX}
+                value={playerX}
+              />
+            </div>
+            <div className="game__player-o">
+              <label htmlFor="playerO">Player O Name</label>
+              <input
+                id="playerO"
+                type="text"
+                onChange={changePlayerO}
+                value={playerO}
+              />
+            </div>
+          </div>
+
+          <p>{statusText}</p>
+          <Board
+            squares={current.squares}
+            onClick={index => handleClick(index)}
+          />
         </div>
-        <div className="game-status">{statusText}</div>
-        <Board
-          squares={current.squares}
-          onClick={index => handleClick(index)}
-        />
+        <button className="game__reset" onClick={resetGame}>
+          Reset
+        </button>
       </div>
+      {isShowingGameRules && <RulesModal onClose={hideRules} />}
     </div>
   );
 };
