@@ -10,7 +10,7 @@ const Game = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [statusText, setStatusText] = useState("");
-  const [isShowingGameRules, showGameRules] = useState(false);
+  const [isShowingGameRules, setIsShowingGameRules] = useState(false);
 
   const playerXName = playerX || "X";
   const playerOName = playerO || "O";
@@ -30,11 +30,11 @@ const Game = () => {
   }, [history, playerX, playerO]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const showRules = () => {
-    showGameRules(!isShowingGameRules);
+    setIsShowingGameRules(!isShowingGameRules);
   };
 
   const hideRules = () => {
-    showGameRules(false);
+    setIsShowingGameRules(false);
   };
 
   const resetGame = () => {
@@ -42,7 +42,7 @@ const Game = () => {
     setXIsNext(true);
     setHistory([{ squares: Array(9).fill(null) }]);
     setStatusText("");
-    showGameRules(false);
+    setIsShowingGameRules(false);
   };
 
   const changePlayerX = event => {

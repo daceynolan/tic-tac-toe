@@ -2,7 +2,7 @@ p {
   font-weight: 500;
 }
 
-.game__rules {
+.game-rules {
   background-color: #f6f7fb;
   position: fixed;
   left: 0;
@@ -14,7 +14,7 @@ p {
   align-items: center;
 }
 
-.game__rules--container {
+.game-rules__container {
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px;
@@ -22,7 +22,7 @@ p {
   overflow: hidden;
 }
 
-.game__rules--title {
+.game-rules__title {
   margin: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
   z-index: 1;
@@ -33,6 +33,6 @@ p {
   font-weight: 600;
 }
 
-.game__rules--content {
+.game-rules__content {
   padding: 16px;
 }

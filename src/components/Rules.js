@@ -4,10 +4,10 @@ import "./rules.css";
 
 const Rules = props => {
   return (
-    <div className="game__rules" onClick={props.onClick}>
-      <div className="game__rules--container">
-        <h2 className="game__rules--title">Game Rules</h2>
-        <div className="game__rules--content">
+    <div className="game-rules" onClick={props.onClick}>
+      <div className="game-rules__container">
+        <h2 className="game-rules__title">Game Rules</h2>
+        <div className="game-rules__content">
           <ol>
             <li>Pick if you want to be player X or player O.</li>
             <li>
