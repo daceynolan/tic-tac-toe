@@ -113,7 +113,7 @@ input[type="text"]:focus {
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px;
-  max-width: 600px;
+  max-width: 500px;
   overflow: hidden;
   justify-content: center;
   align-items: center;
