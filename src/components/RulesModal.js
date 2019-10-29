@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./rules.css";
+import "./rulesmodal.css";
 
-const Rules = props => {
+const RulesModal = props => {
   return (
     <div className="game-rules" onClick={props.onClick}>
       <div className="game-rules__container">
@@ -29,4 +29,4 @@ const Rules = props => {
   );
 };
 
-export default Rules;
+export default RulesModal;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import Board from "./Board";
-import Rules from "./Rules";
+import RulesModal from "./RulesModal";
 
 const Game = () => {
   const [stepNumber, setStepNumber] = useState(0);
@@ -41,7 +41,6 @@ const Game = () => {
     setStepNumber(0);
     setXIsNext(true);
     setHistory([{ squares: Array(9).fill(null) }]);
-    setStatusText("");
     setIsShowingGameRules(false);
   };
 
@@ -79,7 +78,7 @@ const Game = () => {
         </h1>
         <div className="game__content">
           <div className="game__player">
-            <div className="game__player--x">
+            <div className="game__player-x">
               <label htmlFor="playerX">Player X Name</label>
               <input
                 id="playerX"
@@ -88,7 +87,7 @@ const Game = () => {
                 value={playerX}
               />
             </div>
-            <div className="game__player--o">
+            <div className="game__player-o">
               <label htmlFor="playerO">Player O Name</label>
               <input
                 id="playerO"
@@ -109,7 +108,7 @@ const Game = () => {
           Reset
         </button>
       </div>
-      {isShowingGameRules && <Rules onClick={hideRules} />}
+      {isShowingGameRules && <RulesModal onClose={hideRules} />}
     </div>
   );
 };

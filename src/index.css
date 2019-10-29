@@ -23,7 +23,7 @@ input {
   font-size: 12px;
   display: block;
   padding: 10px 18px 11px;
-  box-shadow: 0 1px 3px 1px #838689;
+  box-shadow: 0 1px 3px 1px rgba (160, 161, 188, 0.14);
   text-size-adjust: 100%;
   transition: box-shadow 0.3s ease-in-out;
   border: none;
@@ -32,7 +32,7 @@ input {
 }
 
 input:hover {
-  box-shadow: 0 3px 6px 1px #838689;
+  box-shadow: 0 3px 6px 1px rgba(160, 161, 188, 0.35);
 }
 
 input[type="text"]:focus {
@@ -49,7 +49,7 @@ input[type="text"]:focus {
   border: #ffffff;
   overflow: hidden;
   margin: 10px;
-  transition: all 150ms linear;
+  transition: all 0.15s linear;
 }
 
 .button:hover {
@@ -146,15 +146,14 @@ input[type="text"]:focus {
 }
 
 .game__player {
-  width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.game__player--x {
+.game__player-x {
   margin-right: 20px;
 }
-.game__player--o {
+.game__player-o {
   margin-left: 20px;
 }
 
