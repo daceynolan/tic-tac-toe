@@ -157,3 +157,19 @@ input[type="text"]:focus {
 .game-player__o {
   margin-left: 20px;
 }
+
+.game-reset {
+  background: #ffffff;
+  cursor: pointer;
+  color: rgb(67, 209, 175);
+  border-color: rgb(67, 209, 175);
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.game-reset:hover {
+  background: rgb(67, 209, 175);
+  margin: 10px;
+  color: #ffffff;
+  transition: all 0.4s ease 0s;
+}

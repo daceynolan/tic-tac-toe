@@ -37,6 +37,16 @@ const Game = () => {
     showGameRules(false);
   };
 
+  const resetGame = () => {
+    setStepNumber(0);
+    setPlayerX("");
+    setPlayerO("");
+    setXIsNext(true);
+    setHistory([{ squares: Array(9).fill(null) }]);
+    setStatusText("");
+    showGameRules(false);
+  };
+
   const changePlayerX = event => {
     setPlayerX(event.target.value);
   };
@@ -97,6 +107,9 @@ const Game = () => {
             onClick={index => handleClick(index)}
           />
         </div>
+        <button className="game-reset" onClick={resetGame}>
+          Reset
+        </button>
       </div>
       {gameRules && <Rules onClick={hideRules} />}
     </div>
