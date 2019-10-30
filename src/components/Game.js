@@ -13,20 +13,19 @@ const Game = () => {
   const [statusText, setStatusText] = useState("");
   const [isShowingGameRules, setIsShowingGameRules] = useState(false);
   const [winningIndexes, setWinningIndexes] = useState([]);
-
+  const current = history[stepNumber];
   const playerXName = playerX || "X";
   const playerOName = playerO || "O";
 
-  const current = history[stepNumber];
-
   useEffect(() => {
-    const current = history[stepNumber];
     const winner = calculateWinner(current.squares);
     // Max at 10 since first move is "start" game + 9 real moves
     const MAX_HISTORY = 10;
     if (winner) {
       setWinningIndexes(winner.indexes);
-      return setStatusText(`Winner: ${winner.player}`);
+      return setStatusText(
+        `Winner: ${winner.player === "X" ? playerXName : playerOName}`
+      );
     }
     if (history.length >= MAX_HISTORY && !winner) {
       return setStatusText("Draw");
