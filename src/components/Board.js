@@ -4,10 +4,13 @@ import Square from "./Square";
 
 class Board extends React.Component {
   renderSquare(index) {
+    const winningIndex = this.props.winningIndexes.indexOf(index);
     return (
       <Square
-        value={this.props.squares[index]}
+        delayMultiplier={winningIndex}
+        isHighlighted={winningIndex > -1}
         onClick={() => this.props.onClick(index)}
+        value={this.props.squares[index]}
       />
     );
   }

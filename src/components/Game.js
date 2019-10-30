@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Board from "./Board";
 import RulesModal from "./RulesModal";
-import calculateWinner from "../Help";
+import { calculateWinner } from "../utils";
 
 const Game = () => {
   const [stepNumber, setStepNumber] = useState(0);
@@ -12,9 +12,12 @@ const Game = () => {
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [statusText, setStatusText] = useState("");
   const [isShowingGameRules, setIsShowingGameRules] = useState(false);
+  const [winningIndexes, setWinningIndexes] = useState([]);
 
   const playerXName = playerX || "X";
   const playerOName = playerO || "O";
+
+  const current = history[stepNumber];
 
   useEffect(() => {
     const current = history[stepNumber];
@@ -22,7 +25,8 @@ const Game = () => {
     // Max at 10 since first move is "start" game + 9 real moves
     const MAX_HISTORY = 10;
     if (winner) {
-      return setStatusText(`Winner: ${winner}`);
+      setWinningIndexes(winner.indexes);
+      return setStatusText(`Winner: ${winner.player}`);
     }
     if (history.length >= MAX_HISTORY && !winner) {
       return setStatusText("Draw");
@@ -42,6 +46,7 @@ const Game = () => {
     setStepNumber(0);
     setXIsNext(true);
     setHistory([{ squares: Array(9).fill(null) }]);
+    setWinningIndexes([]);
   };
 
   const changePlayerX = event => {
@@ -64,8 +69,6 @@ const Game = () => {
     setStepNumber(sliceHistory.length);
     setXIsNext(!xIsNext);
   };
-
-  const current = history[stepNumber];
 
   return (
     <div className="game">
@@ -99,8 +102,9 @@ const Game = () => {
           </div>
           <p>{statusText}</p>
           <Board
-            squares={current.squares}
             onClick={index => handleClick(index)}
+            squares={current.squares}
+            winningIndexes={winningIndexes}
           />
         </div>
         <button className="game__reset" onClick={resetGame}>

@@ -1,8 +1,14 @@
 import React from "react";
 
-const Square = ({ onClick, value }) => {
+import "./square.css";
+
+const Square = ({ onClick, value, isHighlighted, delayMultiplier }) => {
   return (
-    <button className="square" onClick={onClick}>
+    <button
+      className={`square ${isHighlighted ? "square--highlight" : ""}`}
+      onClick={onClick}
+      style={{ transitionDelay: `${Number(delayMultiplier) * 0.3}s` }}
+    >
       {value}
     </button>
   );

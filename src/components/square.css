@@ -1,0 +1,31 @@
+.square {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #838689;
+  display: flex;
+  font-size: 45px;
+  font-weight: bold;
+  line-height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  width: 100px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  color: #43d1af;
+  transition: background 0.3s, color 0.3s;
+}
+
+.square--highlight {
+  background: #43d1af;
+  color: #fff;
+}
+
+.square:focus {
+  outline: #fff;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
