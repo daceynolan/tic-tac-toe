@@ -71,32 +71,6 @@ input[type="text"]:focus {
   display: table;
 }
 
-.square {
-  cursor: pointer;
-  background: #fff;
-  border: 1px solid #838689;
-  display: flex;
-  font-size: 45px;
-  font-weight: bold;
-  line-height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  width: 100px;
-  height: 100px;
-  align-items: center;
-  justify-content: center;
-  color: #43d1af;
-}
-
-.square:focus {
-  outline: none;
-}
-
-.kbd-navigation .square:focus {
-  background: #ddd;
-}
-
 .game {
   background-color: #f6f7fb;
   position: fixed;
@@ -164,6 +138,10 @@ input[type="text"]:focus {
   border-color: #43d1af;
   margin: 10px;
   border-radius: 5px;
+}
+
+.game__reset:focus {
+  outline: #fff;
 }
 
 .game__reset:hover {

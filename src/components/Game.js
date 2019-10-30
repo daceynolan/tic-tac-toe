@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Board from "./Board";
 import RulesModal from "./RulesModal";
+import { calculateWinner } from "../utils";
 
 const Game = () => {
   const [stepNumber, setStepNumber] = useState(0);
@@ -11,17 +12,20 @@ const Game = () => {
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [statusText, setStatusText] = useState("");
   const [isShowingGameRules, setIsShowingGameRules] = useState(false);
-
+  const [winningIndexes, setWinningIndexes] = useState([]);
+  const current = history[stepNumber];
   const playerXName = playerX || "X";
   const playerOName = playerO || "O";
 
   useEffect(() => {
-    const current = history[stepNumber];
     const winner = calculateWinner(current.squares);
     // Max at 10 since first move is "start" game + 9 real moves
     const MAX_HISTORY = 10;
     if (winner) {
-      return setStatusText(`Winner: ${winner}`);
+      setWinningIndexes(winner.indexes);
+      return setStatusText(
+        `Winner: ${winner.player === "X" ? playerXName : playerOName}`
+      );
     }
     if (history.length >= MAX_HISTORY && !winner) {
       return setStatusText("Draw");
@@ -41,6 +45,7 @@ const Game = () => {
     setStepNumber(0);
     setXIsNext(true);
     setHistory([{ squares: Array(9).fill(null) }]);
+    setWinningIndexes([]);
   };
 
   const changePlayerX = event => {
@@ -63,8 +68,6 @@ const Game = () => {
     setStepNumber(sliceHistory.length);
     setXIsNext(!xIsNext);
   };
-
-  const current = history[stepNumber];
 
   return (
     <div className="game">
@@ -96,11 +99,11 @@ const Game = () => {
               />
             </div>
           </div>
-
           <p>{statusText}</p>
           <Board
-            squares={current.squares}
             onClick={index => handleClick(index)}
+            squares={current.squares}
+            winningIndexes={winningIndexes}
           />
         </div>
         <button className="game__reset" onClick={resetGame}>
@@ -113,23 +116,3 @@ const Game = () => {
 };
 
 export default Game;
-
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
-}
