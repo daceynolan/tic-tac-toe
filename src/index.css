@@ -140,6 +140,10 @@ input[type="text"]:focus {
   border-radius: 5px;
 }
 
+.game__reset:focus {
+  outline: #fff;
+}
+
 .game__reset:hover {
   background: #43d1af;
   margin: 10px;
