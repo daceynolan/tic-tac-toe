@@ -13,6 +13,7 @@ const Game = () => {
   const [statusText, setStatusText] = useState("");
   const [isShowingGameRules, setIsShowingGameRules] = useState(false);
   const [winningIndexes, setWinningIndexes] = useState([]);
+
   const current = history[stepNumber];
   const playerXName = playerX || "X";
   const playerOName = playerO || "O";
