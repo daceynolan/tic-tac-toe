@@ -16,8 +16,9 @@ After I gained a better understanding on React, I decided to revisit the applica
 ### Screenshots
 
 <div>
-<img src="https://user-images.githubusercontent.com/54158919/79266945-5b322b80-7e66-11ea-985e-9a1816d0d7ce.png">
-<img  src="https://user-images.githubusercontent.com/54158919/79267036-7735cd00-7e66-11ea-892c-ae6e2fd4814d.png">
+<img height="300" src="https://user-images.githubusercontent.com/54158919/79266945-5b322b80-7e66-11ea-985e-9a1816d0d7ce.png">
+<img height="220" src="https://user-images.githubusercontent.com/54158919/79268421-bfee8580-7e68-11ea-92fc-83074ee89aa1.png">
+
 </div>
 
 ### Setup Instructions
