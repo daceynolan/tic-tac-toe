@@ -2,9 +2,7 @@
 
 ### Purpose
 
-When I first began my journey learning React, I came across [React's official tutorial](https://reactjs.org/tutorial/tutorial.html) building a Tic-Tac-Toe game. At the end of the tutorial, the article challenges the reader to make improvements to the finished application.
-
-After I gained a better understanding on React, I decided to revisit the application and refactor it with my own improvements.
+Early on in my journey to become a developer, I followed the [React's official tutorial](https://reactjs.org/tutorial/tutorial.html) building tic-tac-toe, but not longer after, React 16.8 was released and hooks were officially introduced. The tutorial was never updated, but I wanted to challenge myself to refactor the code to utilize hooks and add new features to the game.
 
 ### Development Focus
 
