@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import Board from "../Board";
+import GithubLink from "../GithubLink";
 import RulesModal from "../RulesModal";
 import { calculateWinner } from "../../utils";
 
@@ -72,6 +73,7 @@ const Game = () => {
 
   return (
     <div className="game">
+      <GithubLink />
       <div className="game__info">
         <h1 className="game__title">
           Tic-Tac-Toe
