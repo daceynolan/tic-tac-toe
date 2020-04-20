@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import Board from "./Board";
-import RulesModal from "./RulesModal";
-import { calculateWinner } from "../utils";
+import Board from "../Board";
+import RulesModal from "../RulesModal";
+import { calculateWinner } from "../../utils";
 
 const Game = () => {
   const [stepNumber, setStepNumber] = useState(0);
@@ -49,15 +49,15 @@ const Game = () => {
     setWinningIndexes([]);
   };
 
-  const changePlayerX = event => {
+  const changePlayerX = (event) => {
     setPlayerX(event.target.value);
   };
 
-  const changePlayerO = event => {
+  const changePlayerO = (event) => {
     setPlayerO(event.target.value);
   };
 
-  const handleClick = index => {
+  const handleClick = (index) => {
     const sliceHistory = history.slice(0, stepNumber + 1);
     const current = sliceHistory[sliceHistory.length - 1];
     const squares = current.squares.slice();
@@ -102,7 +102,7 @@ const Game = () => {
           </div>
           <p>{statusText}</p>
           <Board
-            onClick={index => handleClick(index)}
+            onClick={(index) => handleClick(index)}
             squares={current.squares}
             winningIndexes={winningIndexes}
           />

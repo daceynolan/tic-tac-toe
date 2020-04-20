@@ -1,7 +1,7 @@
 import React from "react";
 
-import Game from "./Game";
-import "../index.css";
+import Game from "./components/Game";
+import "./app.css";
 
 const App = () => {
   return <Game />;
